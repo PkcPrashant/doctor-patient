@@ -1,0 +1,242 @@
+<main class="container">
+    <div>
+        <h1 class="title">Patient Consultation</h1>
+        <form [formGroup]="patientConsultancy" novalidate>
+            
+            <div class="input-container">
+                <label for="date">Date</label>
+                <input id="date" type="date" placeholder="Date" formControlName="date" readonly />
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['date']"></app-validation>
+            </div>
+
+            <div class="input-container">
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Name" [value]="patientConsultancy.get('name')?.value | titlecase" readonly />
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['name']"></app-validation>
+            </div>
+
+            <div class="input-container">
+                <label for="age">Age</label>
+                <input id="age" type="number" placeholder="Age" formControlName="age" />
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['age']"></app-validation>
+            </div>
+
+            <div class="radio-input-container">
+                <label>Gender</label>
+                <div class="radio-input-options">
+                <div class="radio-input-option">
+                    <input type="radio" id="male" name="gender" value="Male" formControlName="gender">
+                    <label for="male">Male</label>
+                </div>
+                <div class="radio-input-option">
+                    <input type="radio" name="gender" id="female" value="Female" formControlName="gender">
+                    <label for="female">Female</label>
+                </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <label for="temperature">Temperature(C)</label>
+                <input id="temperature" type="number" placeholder="Temperature" formControlName="temperature" />
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['temperature']"></app-validation>
+            </div>
+
+            <div class="input-container">
+                <label for="bp">Blood Pressure</label>
+                <input id="bp" type="text" placeholder="Blood Pressure" formControlName="bp" />
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['bp']"></app-validation>
+            </div>
+
+            <div class="input-container">
+                <label for="weight">Weight(kg)</label>
+                <input id="weight" type="number" placeholder="Weight" formControlName="weight" />
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['weight']"></app-validation>
+            </div>
+
+            <div class="input-container">
+                <label for="height">Height(cm)</label>
+                <input id="height" type="number" placeholder="Height" formControlName="height" />
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['height']"></app-validation>
+            </div>
+
+            <div class="input-container textbox">
+                <label for="complaints">Complaints</label>
+                <app-tag-input id="complaints" class="tag-input" placeholder="Complaints" controlName="complaints" [form]="patientConsultancy"></app-tag-input>
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['complaints']"></app-validation>
+            </div>
+
+            <div class="input-container textbox">
+                <label for="tests">Tests</label>
+                <app-tag-input id="tests" class="tag-input" placeholder="Tests" controlName="tests" [form]="patientConsultancy"></app-tag-input>
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['tests']"></app-validation>
+            </div>
+
+            <div class="input-container textbox">
+                <label for=".comments">Diagnosis</label>
+                <app-tag-input id="comments" class="tag-input" placeholder="Diagnosis" controlName="comments" [form]="patientConsultancy"></app-tag-input>
+                <app-validation [submitted]="saved" [abstractControl]="patientConsultancy.controls['comments']"></app-validation>
+            </div>
+
+            <!-- <div class="input-container">
+                <label>Upload File</label>
+                <input type="file" id="myFile" formControlName="filename">
+            </div> -->
+
+            <div class="break"></div>
+
+            <div class="input-container prescriptionBtn">
+                <label>Prescription</label>
+                <button type="button" class="btn btn-primary addMedicineBtn" (click)="addMedicine()">Add Medicine</button>
+            </div>
+            <ng-container formArrayName="prescriptions">
+                <ng-container *ngFor="let prescription of prescriptions.controls; let index = index">
+                    <div class="prescriptions" [formGroupName]="index">
+                        <div class="input-container">
+                            <label *ngIf="!index" for="medicineName">Medicine</label>
+                            <input id="medicineName" type="string" placeholder="Medicine" formControlName="medicineName" list="medicineList" />
+                            <datalist id="medicineList">
+                                <option *ngFor="let item of medicineList" [value]="item">{{item}}</option>
+                              </datalist>
+                            <!-- <app-validation [submitted]="saved" [abstractControl]="prescription.get('medicineName')"></app-validation> -->
+                        </div>
+                
+                        <div class="input-container">
+                            <label *ngIf="!index" for="dosage">Dosage</label>
+                            <input id="dosage" type="text" placeholder="Dosage" formControlName="dosage" />
+                            <!-- <app-validation [submitted]="saved" [abstractControl]="prescriptions.controls['dosage']"></app-validation> -->
+                        </div>
+                
+                        <div class="input-container">
+                            <label *ngIf="!index" for="duration">Duration(Days)</label>
+                            <input id="duration" type="number" placeholder="Duration" formControlName="duration" />
+                            <!-- <app-validation [submitted]="saved" [abstractControl]="prescriptions.controls['duration']"></app-validation> -->
+                        </div>
+                
+                        <div class="input-container">
+                            <label *ngIf="!index" for="comments">Diagnosis</label>
+                            <textarea id="comments" placeholder="Diagnosis" formControlName="comments" ></textarea>
+                            <!-- <app-validation [submitted]="saved" [abstractControl]="prescriptions.controls['comments']"></app-validation> -->
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div class="break"></div>
+            <div class="input-container float-right">
+                <button type="button" class="btn btn-success addMedicineBtn" (click)="makePdf(patientConsultancy.value)">Print</button>
+                <button class="btn btn-primary addMedicineBtn" (click)="save()">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <h1 class="title">Patient Past Visits</h1>
+        <section class="history" *ngFor="let data of patientHistory; let i = index">
+            <span class="details"><b>{{i+1}}). <label>Date: </label>{{data.date}}</b></span>
+            <div class="general-details">
+                <span class="details w-30"><label>Age: </label>{{data.age}} yrs</span>
+                <span class="details w-30"><label>Gender: </label>{{data.gender}}</span>
+                <span class="details w-30"><label>Temperature: </label>{{data.temperature}} C</span>
+                <span class="details w-30"><label>Blood Pressure: </label>{{data.bp}}</span>
+                <span class="details w-30"><label>Weight: </label>{{data.weight}} kg</span>
+                <span class="details w-30"><label>Height: </label>{{data.height}} cm</span>
+            </div>
+
+            <div class="complaints w-80">
+                <label class="w-90">Complaints</label>
+                <div class="w-90 tag-input-container">
+                    <span class="tag" *ngFor="let complaint of data.complaints.split(',')">
+                        {{complaint}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="complaints w-80" *ngIf="data.tests">
+                <label class="w-90">Tests</label>
+                <div class="w-90 tag-input-container">
+                    <span class="tag" *ngFor="let test of data.tests.split(',')">
+                        {{test}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="complaints w-80" *ngIf="data.comments">
+                <label class="w-90">Diagnosis</label>
+                <div class="w-90 tag-input-container">
+                    <span class="tag" *ngFor="let comment of data.comments.split(',')">
+                        {{comment}}
+                    </span>
+                </div>
+            </div>
+            <div *ngIf="data.prescriptions.length" class="complaints border-0 w-80">
+                <label class="w-90">Prescription</label>
+                <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Medicine</th>
+                            <th>Dosage</th>
+                            <th>Duration</th>
+                            <th>Diagnosis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prescription of data.prescriptions; let index = index">
+                                <td>{{prescription.medicineName}}</td>
+                                <td>{{prescription.dosage}}</td>
+                                <td>{{prescription.duration}}</td>
+                                <td>{{prescription.comments}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="input-container float-right">
+                <button class="btn btn-success addMedicineBtn" (click)="makePdf(data)">Download</button>
+            </div>
+        </section>
+    </div>
+</main>
+
+
+<ng-component *ngIf="downloadData">
+    <div #consultancy>
+        <span class="download"><label>Date: </label>{{downloadData.date}}</span>
+        <div class="download-details">
+            <span class="download"><label>Name: </label>{{downloadData.name}}</span>
+            <span class="download"><label>Age: </label>{{downloadData.age}}</span>
+            <span class="download"><label>Gender: </label>{{downloadData.gender}}</span>
+            <span class="download"><label>Temperature(C): </label>{{downloadData.temperature}}</span>
+            <span class="download"><label>Blood Pressure: </label>{{downloadData.bp}}</span>
+            <span class="download"><label>Weight: </label>{{downloadData.weight}}</span>
+            <span class="download"><label>Height: </label>{{downloadData.height}}</span>
+            <span class="download"><label>Complaints: </label>{{downloadData.complaints}}</span>
+            <span class="download" *ngIf="downloadData.tests"><label>Tests: </label>{{downloadData.tests}}</span>
+            <span class="download" *ngIf="downloadData.comments"><label>Diagnosis: </label>{{downloadData.comments}}</span>
+        </div>
+        
+        <!-- <div class="download" *ngIf="downloadData.filename">
+            <label>Uploaded file: </label>{{downloadData.filename}}
+        </div> -->
+        <div *ngIf="downloadData.prescriptions.length" class="download-table">
+            <b>Prescription:</b>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicine</th>
+                        <th>Dosage</th>
+                        <th>Duration</th>
+                        <th>Diagnosis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prescription of downloadData.prescriptions; let index = index">
+                            <td>{{prescription.medicineName}}</td>
+                            <td>{{prescription.dosage}}</td>
+                            <td>{{prescription.duration}}</td>
+                            <td>{{prescription.comments}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+</ng-component>

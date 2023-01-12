@@ -1,0 +1,6 @@
+.footer-container {
+    background:darkblue;
+    display:flex;
+    justify-content: space-between;
+    padding: 0.625rem;
+}

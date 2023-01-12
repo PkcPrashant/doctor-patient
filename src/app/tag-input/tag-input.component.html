@@ -1,0 +1,8 @@
+<div class="tag-input-container" [formGroup]="form">
+    <div *ngFor="let tag of tags; let index = index" class="tag">
+        {{tag}}
+        <span (click)="deleteTag(index)">x</span>
+    </div>
+    <input [value]="input" [id]="id" [placeholder]="placeholder" [formControlName]="controlName" (keydown)="onKeyDown($event)" (keyup)="onKeyUp()"
+        (input)="onChange($event)" />
+</div>

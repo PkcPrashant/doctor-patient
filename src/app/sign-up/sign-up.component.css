@@ -1,0 +1,26 @@
+.container {
+    width: 70vw;
+    box-shadow: 0 0 0.625rem #000;
+}
+
+.user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-container, 
+.radio-input-container {
+    width: 45%;
+}
+
+.break {
+    flex-basis: 100%;
+}
+
+@media(max-width: 600px){
+    .input-container, 
+    .radio-input-container {
+        width: 95%;
+    }
+}

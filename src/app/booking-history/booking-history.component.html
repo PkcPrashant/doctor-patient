@@ -1,0 +1,28 @@
+<main class="container">
+      <h1 class="title">Booking History</h1>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Requested Date</th>
+              <th>Doctor Name</th>
+              <th>Specialization</th> 
+              <th>Location</th>
+              <th>Booking Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor= "let mybooking of myprofile">
+              <td>{{ mybooking.booking_date }}, {{ mybooking.booking_time }}</td>
+              <td>{{ mybooking.first_name }}{{ mybooking.last_name }}</td>
+              <td>{{ mybooking.Specialization }}</td>
+              <td>{{ mybooking.clinic_location }}</td>
+              <td>
+                <p class="status {{ mybooking.booking_status }}">{{ mybooking.booking_status }}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</main>
+  

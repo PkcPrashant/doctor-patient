@@ -1,0 +1,165 @@
+<main class="container">
+  <h1 class="title">Registration</h1>
+  <form [formGroup]="registrationForm" (submit)="getUserRegister(registrationForm.value)" novalidate>
+    <div class="user-details">
+      <div class="radio-input-container">
+        <label>Role</label>
+        <div class="radio-input-options">
+          <div class="radio-input-option">
+            <input type="radio" id="doctor" value="doctor" formControlName="userRole">
+            <label for="doctor">Doctor</label>
+          </div>
+          <div class="radio-input-option">
+            <input type="radio" id="patient" value="patient" formControlName="userRole">
+            <label for="patient">Patient</label>
+          </div>
+        </div>
+      </div>
+      <div class="break"></div>
+      <div class="input-container">
+        <label for="fullName">First Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="First Name" formControlName="firstName" />
+        <app-validation [submitted]="submitted"
+          [abstractControl]="registrationFormControls['firstName']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label for="username">Last Name</label>
+        <input type="text" id="username" name="username" placeholder="Last Name" formControlName="lastName" />
+        <app-validation [submitted]="submitted"
+          [abstractControl]="registrationFormControls['lastName']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" formControlName="email" />
+        <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['email']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label for="phoneNumber">Mobile</label>
+        <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number"
+          formControlName="mobile" />
+        <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['mobile']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Password</label> <br>
+        <input type="password" value="doctorsPassword" formControlName="password" placeholder="Password">
+        <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['password']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Confirm Password</label> <br>
+        <input type="password" value="doctorsConfirmPassword" formControlName="confirmPassword"
+          placeholder="Confirm Password">
+        <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['confirmPassword']"></app-validation>
+      </div>
+      <div class="radio-input-container">
+        <label>Gender</label>
+        <div class="radio-input-options">
+          <div class="radio-input-option">
+            <input type="radio" id="male" name="gender" value="male" formControlName="gender" selected>
+            <label for="male">Male</label>
+          </div>
+          <div class="radio-input-option">
+            <input type="radio" name="gender" id="female" value="female" formControlName="gender">
+            <label for="female">Female</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section *ngIf="registrationForm.value['userRole'] === 'doctor'" formGroupName="doctorDetails" class="user-details">
+      <div class="input-container">
+        <label>Clinic Name</label> <br>
+        <input type="text" formControlName="clinicName" placeholder="Clinic Name">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['clinicName']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Clinic Location</label> <br>
+        <input type="text" formControlName="clinicLocation" placeholder="Clinic Location">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['clinicLocation']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Clinic City</label> <br>
+        <input type="text" required formControlName="clinicCity" placeholder="Clinic City">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['clinicCity']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>State</label> <br>
+        <select formControlName="state" placeholder="State">
+          <option value="" disabled selected>Choose State...</option>
+          <option>Andhrapradesh</option>
+          <option>Telangana</option>
+          <option>Karnataka</option>
+          <option>Tamilnadu</option>
+          <option>Kerala</option>
+          <option>Uttarpradesh</option>
+          <option>MadhyaPradesh</option>
+          <option>Jharkhand</option>
+        </select>
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['state']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Pincode</label> <br>
+        <input type="number" formControlName="pincode" placeholder="Pincode">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['pincode']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>License Number</label> <br>
+        <input type="text" formControlName="licenceNumber" placeholder="Number">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['licenceNumber']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Consultation Fee</label> <br>
+        <input type="number" formControlName="consultationFee" placeholder="Consultation Fee">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['consultationFee']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Alternate Mobile</label> <br>
+        <input type="number" value="doctorsAlternateMobile" formControlName="alternateMobile"
+          placeholder="Mobile Number">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['alternateMobile']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Specialization</label> <br>
+        <input type="text" formControlName="specialization" placeholder="Specialization">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['specialization']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Qualification</label> <br>
+        <input type="text" formControlName="qualification" placeholder="Qualification">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['qualification']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Experience</label> <br>
+        <input type="number" formControlName="experience" placeholder="Experience">
+        <app-validation [submitted]="submitted" [abstractControl]="doctorControls['experience']"></app-validation>
+      </div>
+    </section>
+
+    <section *ngIf="registrationForm.value['userRole'] === 'patient'" formGroupName="patientDetails" class="user-details">
+      <div class="input-container">
+        <label>Age</label> <br>
+        <input type="number" formControlName="Age" placeholder="Age">
+        <app-validation [submitted]="submitted" [abstractControl]="patientControls['Age']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>Address</label> <br>
+        <input type="text" formControlName="patientAddress" placeholder="Address">
+        <app-validation [submitted]="submitted" [abstractControl]="patientControls['patientAddress']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>City</label> <br>
+        <input type="text" formControlName="patientCity" placeholder="City">
+        <app-validation [submitted]="submitted" [abstractControl]="patientControls['patientCity']"></app-validation>
+      </div>
+      <div class="input-container">
+        <label>State</label> <br>
+        <input type="text" formControlName="patientState" placeholder="State">
+        <app-validation [submitted]="submitted" [abstractControl]="patientControls['patientState']"></app-validation>
+      </div>
+    </section>
+
+    <div class="float-right">
+      <button class="btn btn-primary">Register</button>
+    </div>
+
+  </form>
+</main>

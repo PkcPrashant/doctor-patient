@@ -1,0 +1,7 @@
+<div *ngIf="(submitted || abstractControl?.touched) && abstractControl?.invalid">
+    <small *ngIf="abstractControl.errors?.['required']">Field is required</small>
+    <small *ngIf="abstractControl.errors?.['email']">Please enter valid email address</small>
+    <small *ngIf="abstractControl.errors?.['pattern']">Please enter valid mobile number</small>
+    <small *ngIf="abstractControl.errors?.['passwordMatcher']">Passwords do not match</small>
+    <small *ngIf="abstractControl.errors?.['minlength']">Minimum {{abstractControl.errors?.['minlength']['requiredLength']}} characters are required</small>
+</div>

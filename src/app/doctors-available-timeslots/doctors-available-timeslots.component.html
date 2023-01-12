@@ -1,0 +1,58 @@
+<main class="doc_time_cont_main">
+    <header class="calendar-head">
+        <h1>{{requestedPatientName}}</h1>
+        <input type="date" [value] ="selectedDate | date:'yyyy-MM-dd'"  (change)="onChangeDate($event)">
+        <select [(ngModel)]="choose_time"  (change)="onChangeTime($event)" >
+            <option value="default">Choose Time</option>
+            <option *ngFor="let time of defaultDailyTimings" [value]="time">
+                {{time}}
+            </option>
+          </select>
+          <button class="btn btn-primary" (click)="onFinalConfirmation()">Confirm Appointment</button>
+    </header>
+    <div class="available_confirmed_timeslots_container">
+
+        <div class="slot_container"> 
+            <div *ngFor="let dailySlots of defaultDailyTimings; let index = index"  class="slot">
+                <p class="m-0">Time Slot: {{dailySlots}}</p>
+                <div *ngFor="let each of tempArray">
+                    <div *ngIf="each.RequestedDate===selectedDate">
+                        <p *ngIf="each.RequestedTime===dailySlots">{{each.Name}}</p>
+                    </div>
+                </div>
+                <div *ngIf="testing" >
+                    <div *ngFor="let slot of testing.slots">
+                        <div *ngIf="slot.doctorTime === dailySlots">
+                            <div class="appointment_container">
+                                <p *ngFor="let eachAppointment of slot.ConfirmedAppointments; let listItemIndex=index ">{{eachAppointment}}{{listItemIndex}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div *ngFor="let particularDay of availableDayslots.newArray">
+            <ng-container *ngIf="particularDay.date===selectedDate ;else defaultSlots">
+                <h1 >Displaying Appointments of {{particularDay.date}}</h1>
+                <div class="slot_container">
+                    <div *ngFor="let slot of particularDay.slots"  class="slot">
+                        <p>{{slot.doctorTime}}</p>
+                        <div class="appointment_container">
+                            <p *ngFor="let eachAppointment of slot.ConfirmedAppointments; let listItemIndex=index ">{{eachAppointment}}{{listItemIndex}} </p>
+                          </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #defaultSlots>
+                <div class="slot_container">
+                    <div *ngFor="let time of defaultDailyTimings"  class="slot">
+                        <p>{{time}}</p>  
+                    </div>
+                </div>
+            </ng-template>
+           
+        </div>
+        -->
+    </div>   
+</main>

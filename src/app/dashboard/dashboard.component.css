@@ -1,0 +1,40 @@
+.dashboard {
+    margin-top: -2.1875rem;
+}
+
+.container {
+    width: 70vw;
+}
+.titletop {
+    font-size: 1.925rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 1.375rem;
+    color: white;
+    text-shadow: 0.125rem 0.125rem 0.125rem black;
+    /* border-bottom: solid 0.0625rem white; */
+  }
+.details{
+    padding: 0;
+}
+
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.search-bar .input-container {
+    width: 27%;
+}
+ 
+ .accept_btn {
+    margin: 0 0.3125rem;
+    background-image: none;
+    width: fit-content;
+    background-color: green;
+ }
+
+ .date-time {
+    width: fit-content;
+ }

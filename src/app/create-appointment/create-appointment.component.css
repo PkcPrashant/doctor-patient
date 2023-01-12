@@ -1,0 +1,33 @@
+.container {
+    width: 70vw;
+    box-shadow: 0 0 0.625rem #000;
+}
+
+.user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-container, 
+.radio-input-container {
+    width: 45%;
+}
+
+.search-bar {
+    justify-content: center;
+}
+
+.search-btn {
+    width: fit-content;
+}
+
+small{
+    color:red;
+}
+@media(max-width: 600px){
+    .input-container, 
+    .radio-input-container {
+        width: 95%;
+    }
+}

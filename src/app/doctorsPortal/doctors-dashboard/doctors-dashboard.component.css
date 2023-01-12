@@ -1,0 +1,35 @@
+.container {
+    width: 70vw;
+    margin-top: -2.1875rem;
+    min-height:80vh;
+}
+.titletop {
+    font-size: 1.925rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 1.375rem;
+    color: white;
+    text-shadow: 0.125rem 0.125rem 0.125rem black;
+    /* border-bottom: solid 0.0625rem white; */
+  }
+.details{
+    padding: 0;
+}
+
+.input-container {
+    flex-wrap: nowrap;
+}
+
+.filter-options {
+    display: flex;
+    width: 60%;
+    align-self: center;
+}
+
+.input-container input {
+    width: 6%;
+}
+
+.d-flex {
+    justify-content: center;
+}

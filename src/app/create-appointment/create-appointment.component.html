@@ -1,0 +1,129 @@
+<main class="container">
+    <section>
+        <h1 class="title">Create A New Appointment</h1>
+        <form class="user-details search-bar" [formGroup]="createAppointmentForm" novalidate
+            (submit)="isUserExists(createAppointmentForm.value)">
+            <div class="input-container">
+                <input type="search" formControlName="searchValue" placeholder="Patient's Email Id" />
+                <app-validation [submitted]="searchClicked" [abstractControl]="createAppointmentForm.controls['searchValue']"></app-validation>
+            </div>
+            <div class="input-container search-btn">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+    </section>
+
+    <section *ngIf="!isExists" id="new_user" [formGroup]="registrationForm">
+        <form [formGroup]="registrationForm" (submit)="bookAppointment('new')" novalidate>
+            <div class="user-details">
+                <div class="input-container">
+                  <label for="fullName">First Name</label>
+                  <input type="text" id="fullName" name="fullName" placeholder="First Name" formControlName="firstName" />
+                  <app-validation [submitted]="submitted"
+                    [abstractControl]="registrationFormControls['firstName']"></app-validation>
+                </div>
+                <div class="input-container">
+                  <label for="username">Last Name</label>
+                  <input type="text" id="username" name="username" placeholder="Last Name" formControlName="lastName" />
+                  <app-validation [submitted]="submitted"
+                    [abstractControl]="registrationFormControls['lastName']"></app-validation>
+                </div>
+                <div class="input-container">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Email" formControlName="email" />
+                  <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['email']"></app-validation>
+                </div>
+                <div class="input-container">
+                  <label for="phoneNumber">Mobile</label>
+                  <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number"
+                    formControlName="mobile" />
+                  <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['mobile']"></app-validation>
+                </div>
+                <div class="input-container">
+                  <label>Password</label> <br>
+                  <input type="password" value="doctorsPassword" formControlName="password" placeholder="Password">
+                  <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['password']"></app-validation>
+                </div>
+                <div class="input-container">
+                  <label>Confirm Password</label> <br>
+                  <input type="password" value="doctorsConfirmPassword" formControlName="confirmPassword"
+                    placeholder="Confirm Password">
+                  <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['confirmPassword']"></app-validation>
+                </div>
+                <div class="radio-input-container">
+                  <label>Gender</label>
+                  <div class="radio-input-options">
+                    <div class="radio-input-option">
+                      <input type="radio" id="male" name="gender" value="male" formControlName="gender" selected>
+                      <label for="male">Male</label>
+                    </div>
+                    <div class="radio-input-option">
+                      <input type="radio" name="gender" id="female" value="female" formControlName="gender">
+                      <label for="female">Female</label>
+                    </div>
+                  </div>
+                </div>
+                    <div class="input-container">
+                      <label>Age</label> <br>
+                      <input type="number" formControlName="Age" placeholder="Age">
+                      <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['Age']"></app-validation>
+                    </div>
+                    <div class="input-container">
+                      <label>Address</label> <br>
+                      <input type="text" formControlName="patientAddress" placeholder="Address">
+                      <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['patientAddress']"></app-validation>
+                    </div>
+                    <div class="input-container">
+                      <label>City</label> <br>
+                      <input type="text" formControlName="patientCity" placeholder="City">
+                      <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['patientCity']"></app-validation>
+                    </div>
+                    <div class="input-container">
+                      <label>State</label> <br>
+                      <input type="text" formControlName="patientState" placeholder="State">
+                      <app-validation [submitted]="submitted" [abstractControl]="registrationFormControls['patientState']"></app-validation>
+                    </div>
+            </div>
+            <div class="float-right">
+                <button class="btn btn-primary">Book Appointment</button>
+            </div>
+        </form>
+    </section>
+    <section *ngIf="isExists" id="existing_user" class="existing-user-info">
+        <div class="input-container">
+            <label>First Name</label>
+            <h3>{{userDetails.firstName}}</h3>
+        </div>
+        <div class="input-container">
+            <label>Last Name</label>
+            <h3>{{userDetails.lastName}}</h3>
+        </div>
+        <div class="input-container">
+            <label>Email</label>
+            <h3>{{userDetails.Email}}</h3>
+        </div>
+        <div class="input-container">
+            <label>Mobile</label>
+            <h3>{{userDetails.Mobile}}</h3>
+        </div>
+        <div class="input-container">
+            <label>City</label>
+            <h3>{{userDetails.city}}</h3>
+        </div>
+        <div class="input-container">
+            <label>Age</label>
+            <h3>{{userDetails.Age}}</h3>
+        </div>
+        <div class="input-container">
+            <label>Address</label>
+            <h3>{{userDetails.Address}}</h3>
+        </div>
+        <div class="input-container">
+            <label>State</label>
+            <h3>{{userDetails.State}}</h3>
+        </div>
+        <div class="input-container btn">
+            <button class="btn btn-primary">Book Appointment</button>
+        </div>
+    </section>
+</main>

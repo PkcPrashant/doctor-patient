@@ -1,0 +1,165 @@
+.container {
+    width: 70vw;
+    box-shadow: 0 0 0.625rem #000;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-container, 
+.radio-input-container {
+    width: 22%;
+}
+
+.textbox {
+    width: 95%;
+}
+
+.prescriptionBtn {
+    display: block;
+    width: 30%;
+}
+
+.prescriptions {
+    display: flex;
+    width: 100%;
+}
+
+.addMedicineBtn {
+    width: fit-content;
+    margin: 1.25rem;
+}
+
+.break {
+    flex-basis: 100%;
+}
+
+.flex {
+    display: flex;
+    margin: 0 0.625rem;
+}
+
+.float-right {
+    justify-content: end;
+    width: 95%;
+}
+
+.history {
+    display: flex;
+    flex-direction: column;
+    padding: 0.625rem 0;
+    border-bottom: 0.0625rem solid white;
+}
+
+.details {
+    display: flex;
+    margin: 0 0.625rem;
+    line-height: 2.5rem;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.details label {
+    padding-right: 0.3125rem;
+    font-weight: bold;
+}
+
+.general-details {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.prescriptionHistory {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+table {
+    width: max-content;
+}
+
+tr {
+    line-height: 0.625rem;
+}
+
+.download {
+    width: 500px;
+    height: 20px;
+    font-size: 10px;
+    display: flex;
+}
+
+.download label {
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+.download-table {
+    width: 200px;
+}
+
+.download-table table {
+    width: min-content;
+    font-size: 8px;
+}
+
+.tag-input {
+    width: 100%;
+    background-color: white;
+}
+
+.complaints {
+    display: block;
+    border-bottom: solid 0.0625rem white;
+    margin: 0.625rem;
+}
+
+.border-0{
+    border: 0;
+}
+
+.complaints label {
+    font-weight: bold;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    margin: 0.4375rem 0;
+    margin-right: 0.625rem;
+    padding: 0.625rem;
+    border: 0.125rem solid gray;
+    border-radius: 0.3125rem;
+    /* background-color: gray; */
+    white-space: nowrap;
+    color: white;
+  }
+
+  .tag-input-container {
+    display: flex;
+    color: black;
+    padding: 0 0.625rem;
+  }
+
+@media(max-width: 600px){
+    .input-container, 
+    .radio-input-container,
+    textarea {
+        width: 95%;
+    }
+}

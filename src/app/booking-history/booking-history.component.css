@@ -1,0 +1,30 @@
+.container {
+    width: 70vw;
+    margin-top: -2.1875rem;
+}
+
+p {
+    height: 2.5rem;
+    width: 50%;
+    border-radius: 0.4375rem;
+    outline: none;
+    border: 0.0625rem solid grey;
+    padding: 0 0.625rem;
+    text-align: center;
+}
+
+.Pending {
+    background-color: orange;
+}
+
+.Completed {
+    background: green;
+}
+
+.Approved {
+    background: #5c5cff;
+}
+
+.Rejected {
+    background: red;
+}

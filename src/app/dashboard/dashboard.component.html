@@ -1,0 +1,60 @@
+<main class="dashboard">
+
+  <div class="container details">
+    <h1 class="titletop">Find a Doctor and make an  appointment</h1>
+    <form [formGroup]="searchForm" (ngSubmit)="search()" novalidate>
+      <div class="search-bar">
+        <div class="input-container">
+          <input type="text" formControlName="location" id="location" name="location" placeholder="Location" />
+        </div>
+        <div class="input-container">
+            <select id="specialization" formControlName="specialization" name="specialization"  placeholder="Specialization">
+             
+              <option value="" disabled selected>Specilization</option>
+              <option *ngFor="let specializations of specialization" value="{{specializations.id}}">{{specializations.Specialization}}</option>
+             
+            </select> 
+        </div>
+        <div class="input-container">
+          <button class="btn btn-primary">Filter</button>
+        </div>
+      </div>
+  </form>
+  </div>
+  
+  <div class="container details">
+    <h1 class="title">Available Doctors</h1>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Doctor's Name</th>
+            <th>Specialization</th>
+            <th>Location</th>
+            <!-- <th>Availability Time</th> -->
+            <th>Request Appointment</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td> {{ post.first_name }}{{ post.last_name }}</td>
+            <td>{{ post.Specialization }}</td>
+            <td>{{ post.clinic_location }}</td>
+            <!-- <td>{{ post.Availability_time }}</td> -->
+            <td>
+              <div class="input-container date-time">
+                  <input type="datetime-local" id="requestdate" name="requestdate">
+              </div>
+            </td>
+            <td>
+              <div class="input-container">
+                <button class="btn btn-primary" (click)="requestappointment()">Request Appointment</button>              
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  </div>
+</main>

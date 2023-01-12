@@ -1,0 +1,56 @@
+.container {
+  width: 70vw;
+  box-shadow: 0 0 0.625rem #000;
+}
+
+.user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.example-form-field {
+  margin: 0 0.5rem 1rem 0;
+}
+.main-user-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.3125rem 0;
+}
+.form-submit-btn input {
+  display: block;
+  width: 100%;
+  font-size: 0.625rem;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background: orange;
+}
+th{
+  padding-left: 1.25rem;
+}
+.deletebtn{
+  width: 80% !important;
+  font-size: 0.625rem;
+}
+.input-container, 
+.radio-input-container {
+  width: 45%;
+}
+.input-container{
+  display: inline-flex;
+}
+.search-bar {
+  justify-content: center;
+}
+
+small{
+  color:red;
+}
+@media(max-width: 600px){
+  .input-container, 
+  .radio-input-container {
+      width: 95%;
+  }
+}

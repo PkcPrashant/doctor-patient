@@ -1,0 +1,13 @@
+
+<div class="header-container">
+    <a [routerLink]="[homeRoute]" class="logo">
+        <h1 class="title">Prohire Medical</h1>
+    </a>
+    <nav class="nav-bar">
+        <a *ngIf="profile === 'patient'" routerLink="/booking-history">My Bookings</a>
+        <a *ngIf="profile === 'doctor'" routerLink="/createAppointment">Create Appointment</a>
+        <a *ngIf="profile === 'doctor'" routerLink="/doctorprofile">My Profile</a>
+        <a *ngIf="profile" routerLink="" (click)="logout()">Logout</a>
+    </nav>
+    </div>
+    

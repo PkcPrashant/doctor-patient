@@ -1,0 +1,28 @@
+<main class="form-cont">
+    <div class="container">
+      <h1 class="form-title">Doctor's Availability</h1>
+      
+      <div class="main-user-info">
+       <h3 class="doc-title">Doctor's Name : <span>John Robert</span></h3> 
+       <h3 class="doc-title">Specialization : <span>Child Care</span></h3> 
+       <h3 class="doc-title">Location : <span>Hyderabad</span></h3> 
+       <h3 class="doc-title">Availability : <span>04:00pm - 06:00pm</span></h3> 
+        
+      </div>
+        <button (click)="setMonth(-1)">&lt;</button>
+        <span style="color: white;">{{date | date}}</span>
+        <button (click)="setMonth(+1)">&gt;</button>
+        
+        <ul>
+        <li class="days" *ngFor="let day of days"> {{day}} </li>
+        <li *ngFor="let date of dates"
+            [ngClass]="{grey: !isSameMonth(date)}"
+            (click)="selected.emit(date)" disabled>
+            {{date | date:'d'}}
+        </li>
+        </ul>
+    </div>
+
+  
+  
+  </main>

@@ -1,0 +1,37 @@
+<main class="container">
+  <h1 class="title">Login</h1>
+  <form [formGroup]="loginForm" (submit)="getUserLogin(loginForm.value)" novalidate>
+    
+    <div class="input-container">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" formControlName="userEmail" />
+      <app-validation [submitted]="submitted" [abstractControl]="loginFormControls['userEmail']"></app-validation>
+    </div>
+
+    <div class="input-container">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Password" formControlName="userPwd" />
+      <app-validation [submitted]="submitted" [abstractControl]="loginFormControls['userPwd']"></app-validation>
+    </div>
+
+    <div class="radio-input-container">
+      <label>Role</label>
+      <div class="radio-input-options">
+        <div class="radio-input-option">
+          <input type="radio" id="doctor" name="userRole" value="doctor" formControlName="userRole">
+          <label for="doctor">Doctor</label>
+        </div>
+        <div class="radio-input-option">
+          <input type="radio" id="patient" name="userRole" value="patient" formControlName="userRole">
+          <label for="patient">Patient</label>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button class="btn btn-primary">Login</button>
+    </div>
+
+  </form>
+  <p>Not a member yet ? <a routerLink="/signup">SignUp</a></p>
+</main>
